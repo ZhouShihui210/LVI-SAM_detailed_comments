@@ -159,6 +159,11 @@ void imu_callback(const sensor_msgs::ImuConstPtr &imu_msg)
     }
 }
 
+/**
+ * @brief 从激光惯性子系统获取的相关参数
+ * 
+ * @param odom_msg 
+ */
 void odom_callback(const nav_msgs::Odometry::ConstPtr& odom_msg)
 {
     m_odom.lock();

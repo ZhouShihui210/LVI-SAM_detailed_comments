@@ -31,9 +31,9 @@ class FeaturePerFrame
         cur_td = td;
     }
     double cur_td;
-    Vector3d point;
-    Vector2d uv;
-    Vector2d velocity;
+    Vector3d point; // 三维点（地图点）
+    Vector2d uv;  // 特征点的图像坐标
+    Vector2d velocity;  // 特征点的速度信息
     double z;
     bool is_used;
     double parallax;
@@ -46,14 +46,16 @@ class FeaturePerFrame
 class FeaturePerId
 {
   public:
-    const int feature_id;
-    int start_frame;
-    vector<FeaturePerFrame> feature_per_frame;
+    const int feature_id; // 特征点的ID
+    int start_frame;  // 滑窗中第几帧能够跟踪到当前特征点
+    vector<FeaturePerFrame> feature_per_frame; // 对应ID下的所有特征点
 
-    int used_num;
+    int used_num; // 对应ID下的所有特征点数目
     bool is_outlier;
     bool is_margin;
     double estimated_depth;
+
+    // 新添加的激光雷达属性
     bool lidar_depth_flag;
     int solve_flag; // 0 haven't solve yet; 1 solve succ; 2 solve fail;
 
@@ -103,6 +105,8 @@ class FeatureManager
     void removeBack();
     void removeFront(int frame_count);
     void removeOutlier();
+
+    // 特征点列表
     list<FeaturePerId> feature;
     int last_track_num;
 
