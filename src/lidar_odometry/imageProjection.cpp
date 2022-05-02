@@ -7,7 +7,7 @@ struct PointXYZIRT
     PCL_ADD_POINT4D //分别有float类型的 x、y、z 还有一个对齐变量
     PCL_ADD_INTENSITY;//float类型的密度 
     uint16_t ring; // 总的线圈数
-    float time; // todo
+    float time; // 时间戳
     EIGEN_MAKE_ALIGNED_OPERATOR_NEW //保证在内存中是对齐的状态
 } EIGEN_ALIGN16;
 
@@ -63,9 +63,9 @@ private:
     double *imuRotY = new double[queueLength];
     double *imuRotZ = new double[queueLength];
 
-    int imuPointerCur;//todo 
+    int imuPointerCur;//点云对应imu的索引
     bool firstPointFlag;
-    Eigen::Affine3f transStartInverse; //todo
+    Eigen::Affine3f transStartInverse; //初始的位姿
 
     pcl::PointCloud<PointXYZIRT>::Ptr laserCloudIn;
     pcl::PointCloud<PointType>::Ptr   fullCloud;

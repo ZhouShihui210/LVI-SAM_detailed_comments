@@ -131,12 +131,12 @@ void Estimator::processImage(const map<int, vector<pair<int, Eigen::Matrix<doubl
     // Add new image features
     // 返回值是当前帧是否是关键帧
     if (f_manager.addFeatureCheckParallax(frame_count, image, td))
-        marginalization_flag = MARGIN_OLD;  // 若当前帧为关键帧则边缘化掉滑窗中的最老帧
+        marginalization_flag = MARGIN_OLD;  // 若次新帧为关键帧则边缘化掉滑窗中的最老帧
     else
-        marginalization_flag = MARGIN_SECOND_NEW;   // 若当前帧不是关键帧，则边缘化掉滑窗中的最新帧
+        marginalization_flag = MARGIN_SECOND_NEW;   // 若次新帧不是关键帧，则边缘化掉滑窗中的次新帧
 
     // Marginalize old imgs if lidar odometry available for initialization
-    // 注意这里： 更改了边缘化的条件，若激光惯性子系统已经传过来了有效值，则无论当前帧是否为关键帧
+    // 注意这里： 更改了边缘化的条件，若激光惯性子系统已经传过来了有效值，则无论次新帧是否为关键帧
     // 都是只边缘化最老帧
     if (solver_flag == INITIAL && lidar_initialization_info[0] >= 0)
         marginalization_flag = MARGIN_OLD;
@@ -762,7 +762,7 @@ void Estimator::double2vector()
 //系统故障检测
 bool Estimator::failureDetection()
 {
-    //最新帧中的
+    //次新中的
     if (f_manager.last_track_num < 2)
     {
         ROS_ERROR("VINS little feature %d!", f_manager.last_track_num);
