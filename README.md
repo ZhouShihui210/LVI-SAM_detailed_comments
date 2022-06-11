@@ -10,7 +10,7 @@
 
 ## docker环境链接
 
-[LVI-SAM学习小组docker v1.2使用图文简洁介绍](LVI-SAM学习小组docker v1.2使用图文简洁介绍)
+[LVI-SAM学习小组docker v1.2使用图文简洁介绍]([LVI-SAM学习小组docker v1.2使用图文简洁介绍](https://github.com/electech6/LVI-SAM_detailed_comments/blob/master/LVI-SAM%E5%AD%A6%E4%B9%A0%E5%B0%8F%E7%BB%84docker%20v1.2%E4%BD%BF%E7%94%A8%E5%9B%BE%E6%96%87%E7%AE%80%E6%B4%81%E4%BB%8B%E7%BB%8D.pdf))
 
 docker镜像已上传docker-hub，可以拉取镜像按照教程使用节约环境配置的时间
 
