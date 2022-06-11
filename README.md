@@ -10,7 +10,7 @@
 
 ## docker环境链接
 
-[LVI-SAM学习小组docker v1.2使用图文简洁介绍]([LVI-SAM学习小组docker v1.2使用图文简洁介绍](https://github.com/electech6/LVI-SAM_detailed_comments/blob/master/LVI-SAM%E5%AD%A6%E4%B9%A0%E5%B0%8F%E7%BB%84docker%20v1.2%E4%BD%BF%E7%94%A8%E5%9B%BE%E6%96%87%E7%AE%80%E6%B4%81%E4%BB%8B%E7%BB%8D.pdf))
+[LVI-SAM学习小组docker v1.2使用图文简洁介绍](https://github.com/electech6/LVI-SAM_detailed_comments/blob/master/LVI-SAM%E5%AD%A6%E4%B9%A0%E5%B0%8F%E7%BB%84docker%20v1.2%E4%BD%BF%E7%94%A8%E5%9B%BE%E6%96%87%E7%AE%80%E6%B4%81%E4%BB%8B%E7%BB%8D.pdf)
 
 docker镜像已上传docker-hub，可以拉取镜像按照教程使用节约环境配置的时间
 
@@ -29,8 +29,8 @@ docker镜像已上传docker-hub，可以拉取镜像按照教程使用节约环�
 
 1. **LVI-SAM英文论文精读** 
 2. **简单捋一遍LOAM到LVI-SAM的方法跃迁**
-3. **visual_feature + featureExtraction **，横向对比视觉和雷达的**提取特征思路上的异同** 
-4. **imuPreintergation.cpp（激光与视觉）**，结合imu预积分的原理推导和代码讲解 
+3. **visual_feature + featureExtraction** ，横向对比视觉和雷达的提取特征思路上的异同 
+4. **imuPreintergation.cpp**，结合imu预积分的原理推导和代码讲解 
 5. **visual_estimator** ，视觉里程计部分
 6. **imageProjection.cpp** ，激光雷达数据去畸变 
 7. **mapOptmization**  ，因子图优化
