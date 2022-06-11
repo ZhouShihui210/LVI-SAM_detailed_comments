@@ -1,125 +1,55 @@
-LVI-SAM超详细注释
+# LVI-SAM超详细注释
 
 -by 计算机视觉life 旗下 [SLAM知识星球学习小组](https://mp.weixin.qq.com/s/Lzn7jUPRwpbMqe-5Ku9Ksg)
 
-参与人员（排名不分先后）：
+**参与人员**（排名不分先后）：
 
 荆黎明（东北大学）、刘嘉林（复旦大学）、汪寿安（中国矿业大学北京）、万文俊（中科院计算所）、周新杰（哈工大）、乔生（吉林大学）、刘嘉荣（上海交通大学）
 
-# LVI-SAM
 
-This repository contains code for a lidar-visual-inertial odometry and mapping system, which combines the advantages of [LIO-SAM](https://github.com/TixiaoShan/LIO-SAM/tree/a246c960e3fca52b989abf888c8cf1fae25b7c25) and [Vins-Mono](https://github.com/HKUST-Aerial-Robotics/VINS-Mono) at a system level.
 
-<p align='center'>
-    <img src="./doc/demo.gif" alt="drawing" width="800"/>
-</p>
+## docker环境链接
 
----
+[LVI-SAM学习小组docker v1.2使用图文简洁介绍](LVI-SAM学习小组docker v1.2使用图文简洁介绍)
 
-## Dependency
+docker镜像已上传docker-hub，可以拉取镜像按照教程使用节约环境配置的时间
 
-- [ROS](http://wiki.ros.org/ROS/Installation) (Tested with kinetic and melodic)
-- [gtsam](https://github.com/borglab/gtsam/releases) (Georgia Tech Smoothing and Mapping library)
-  ```
-  wget -O ~/Downloads/gtsam.zip https://github.com/borglab/gtsam/archive/4.0.2.zip
-  cd ~/Downloads/ && unzip gtsam.zip -d ~/Downloads/
-  cd ~/Downloads/gtsam-4.0.2/
-  mkdir build && cd build
-  cmake -DGTSAM_BUILD_WITH_MARCH_NATIVE=OFF ..
-  sudo make install -j4
-  ```
-- [Ceres](https://github.com/ceres-solver/ceres-solver/releases) (C++ library for modeling and solving large, complicated optimization problems)
-  ```
-  sudo apt-get install -y libgoogle-glog-dev
-  sudo apt-get install -y libatlas-base-dev
-  wget -O ~/Downloads/ceres.zip https://github.com/ceres-solver/ceres-solver/archive/1.14.0.zip
-  cd ~/Downloads/ && unzip ceres.zip -d ~/Downloads/
-  cd ~/Downloads/ceres-solver-1.14.0
-  mkdir ceres-bin && cd ceres-bin
-  cmake ..
-  sudo make install -j4
-  ```
 
----
 
-## Compile
+## 学习小组录制LVI-SAM数据集
 
-You can use the following commands to download and compile the package.
+链接:https://pan.baidu.com/s/1e5UhbLfnJE28wVy1l1Rc3w?fm=lk0 
+提取码:x5xi
 
-```
-cd ~/catkin_ws/src
-git clone https://github.com/TixiaoShan/LVI-SAM.git
-cd ..
-catkin_make
-```
+百度网盘里存有80G的bag包，bag包的使用说明见网盘链接的README中
 
----
 
-## Datasets
 
-<p align='center'>
-    <img src="./doc/sensor.jpeg" alt="drawing" width="600"/>
-</p>
+## 学习小组分享顺序
 
-The datasets used in the paper can be downloaded from Google Drive. The data-gathering sensor suite includes: Velodyne VLP-16 lidar, FLIR BFS-U3-04S2M-CS camera, MicroStrain 3DM-GX5-25 IMU, and Reach RS+ GPS.
+1. **LVI-SAM英文论文精读** 
+2. **简单捋一遍LOAM到LVI-SAM的方法跃迁**
+3. **visual_feature + featureExtraction **，横向对比视觉和雷达的**提取特征思路上的异同** 
+4. **imuPreintergation.cpp（激光与视觉）**，结合imu预积分的原理推导和代码讲解 
+5. **visual_estimator** ，视觉里程计部分
+6. **imageProjection.cpp** ，激光雷达数据去畸变 
+7. **mapOptmization**  ，因子图优化
+8. **visual_loop** ，视觉回环模块 
+9. **回顾盘点**，理清系统的数据流动，节点之间的关系和总览
 
-```
-https://drive.google.com/drive/folders/1q2NZnsgNmezFemoxhHnrDnp1JV_bqrgV?usp=sharing
-```
+视频分享见 [cvlife.net](https://cvlife.net/detail/p_620a027fe4b02b82584a90e2/6)
 
-**Note** that the images in the provided bag files are in compressed format. So a decompression command is added at the last line of ```launch/module_sam.launch```. If your own bag records the raw image data, please comment this line out.
 
-<p align='center'>
-    <img src="./doc/jackal-earth.png" alt="drawing" width="286.5"/>
-    <img src="./doc/handheld-earth.png" alt="drawing" width="328"/>
-</p>
 
----
+## 中文代码注释
 
-## Run the package
+中文注释的代码已上传
 
-1. Configure parameters:
+期待反馈当前注释存在的问题！
 
-```
-Configure sensor parameters in the .yaml files in the ```config``` folder.
-```
 
-2. Run the launch file:
-```
-roslaunch lvi_sam run.launch
-```
 
-3. Play existing bag files:
-```
-rosbag play handheld.bag 
-```
+## LVI-SAM原仓库链接
 
----
+https://github.com/TixiaoShan/LVI-SAM
 
-## TODO
-
-  - [ ] Update graph optimization using all three factors in imuPreintegration.cpp, simplify mapOptimization.cpp, increase system stability 
-
----
-
-## Paper 
-
-Thank you for citing our [paper](./doc/paper.pdf) if you use any of this code or datasets.
-
-```
-@inproceedings{lvisam2021shan,
-  title={LVI-SAM: Tightly-coupled Lidar-Visual-Inertial Odometry via Smoothing and Mapping},
-  author={Shan, Tixiao and Englot, Brendan and Ratti, Carlo and Rus Daniela},
-  booktitle={IEEE International Conference on Robotics and Automation (ICRA)},
-  pages={to-be-added},
-  year={2021},
-  organization={IEEE}
-}
-```
-
----
-
-## Acknowledgement
-
-  - The visual-inertial odometry module is adapted from [Vins-Mono](https://github.com/HKUST-Aerial-Robotics/VINS-Mono).
-  - The lidar-inertial odometry module is adapted from [LIO-SAM](https://github.com/TixiaoShan/LIO-SAM/tree/a246c960e3fca52b989abf888c8cf1fae25b7c25).
