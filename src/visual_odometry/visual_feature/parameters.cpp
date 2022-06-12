@@ -37,25 +37,27 @@ void readParameters(ros::NodeHandle &n)
     std::string config_file;
     n.getParam("vins_config_file", config_file);
     cv::FileStorage fsSettings(config_file, cv::FileStorage::READ);
+
+    //判断是否打开
     if(!fsSettings.isOpened())
     {
         std::cerr << "ERROR: Wrong path to settings" << std::endl;
     }
 
-    // project name
+    // 获取工程名字
     fsSettings["project_name"] >> PROJECT_NAME;
     std::string pkg_path = ros::package::getPath(PROJECT_NAME);
 
-    // sensor topics
+    // 获取topics名字
     fsSettings["image_topic"]       >> IMAGE_TOPIC;
     fsSettings["imu_topic"]         >> IMU_TOPIC;
     fsSettings["point_cloud_topic"] >> POINT_CLOUD_TOPIC;
 
-    // lidar configurations
+    // 获取雷达配置
     fsSettings["use_lidar"] >> USE_LIDAR;
     fsSettings["lidar_skip"] >> LIDAR_SKIP;
 
-    // feature and image settings
+    // 图像特征及其他相关设置
     MAX_CNT = fsSettings["max_cnt"];
     MIN_DIST = fsSettings["min_dist"];
     ROW = fsSettings["image_height"];
@@ -65,6 +67,7 @@ void readParameters(ros::NodeHandle &n)
     SHOW_TRACK = fsSettings["show_track"];
     EQUALIZE = fsSettings["equalize"];
 
+    // 雷达到相机的外参
     L_C_TX = fsSettings["lidar_to_cam_tx"];
     L_C_TY = fsSettings["lidar_to_cam_ty"];
     L_C_TZ = fsSettings["lidar_to_cam_tz"];
@@ -72,7 +75,7 @@ void readParameters(ros::NodeHandle &n)
     L_C_RY = fsSettings["lidar_to_cam_ry"];
     L_C_RZ = fsSettings["lidar_to_cam_rz"];
 
-    // fisheye mask
+    // 鱼眼掩码
     FISHEYE = fsSettings["fisheye"];
     if (FISHEYE == 1)
     {
@@ -81,7 +84,7 @@ void readParameters(ros::NodeHandle &n)
         FISHEYE_MASK = pkg_path + mask_name;
     }
 
-    // camera config
+    // 相机配置
     CAM_NAMES.push_back(config_file);
 
     WINDOW_SIZE = 20;

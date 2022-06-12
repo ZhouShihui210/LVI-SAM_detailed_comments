@@ -45,19 +45,39 @@ class FeatureTracker
     void rejectWithF();
 
     void undistortedPoints();
-
+    
+    //掩码，用于做图像均一化使用
     cv::Mat mask;
+
     cv::Mat fisheye_mask;
+
     cv::Mat prev_img, cur_img, forw_img;
+
+    //最大特征点数-当前帧已经提取特征点：剩余需要提取的特征点
     vector<cv::Point2f> n_pts;
+
+    // 上一帧和当前帧像素坐标
     vector<cv::Point2f> prev_pts, cur_pts, forw_pts;
+
+    //上一帧和当前值特征点去畸变相机归一化坐标
     vector<cv::Point2f> prev_un_pts, cur_un_pts;
+
+    //点x和y方向运动速度
     vector<cv::Point2f> pts_velocity;
+
+    //特征点id集合
     vector<int> ids;
+
+    //对应特征点跟踪次数
     vector<int> track_cnt;
+
     map<int, cv::Point2f> cur_un_pts_map;
+
+    //上一帧图像特征点map,id->坐标的map
     map<int, cv::Point2f> prev_un_pts_map;
+
     camodocal::CameraPtr m_camera;
+
     double cur_time;
     double prev_time;
 
@@ -99,16 +119,17 @@ public:
                                           const camodocal::CameraPtr& camera_model ,
                                           const vector<geometry_msgs::Point32>& features_2d)
     {
-        // 0.1 initialize depth for return
-        sensor_msgs::ChannelFloat32 depth_of_point;
+        // 0.1 初始化存储特征点深度的容器，大小为特征点数量，初值都为-1；
+        sensor_msgs::ChannelFloat32 ;
         depth_of_point.name = "depth";
         depth_of_point.values.resize(features_2d.size(), -1);
 
-        // 0.2  check if depthCloud available
+        // 0.2  确认雷达点云是否可用，若为空直接返回；
         if (depthCloud->size() == 0)
             return depth_of_point;
 
         // 0.3 look up transform at current image time
+        // 0.3 查询当前图像帧时刻的变换，监听从世界坐标系到body坐标系的变换
         try{
             listener.waitForTransform("vins_world", "vins_body_ros", stamp_cur, ros::Duration(0.01));
             listener.lookupTransform("vins_world", "vins_body_ros", stamp_cur, transform);
@@ -127,10 +148,12 @@ public:
         Eigen::Affine3f transNow = pcl::getTransformation(xCur, yCur, zCur, rollCur, pitchCur, yawCur);
 
         // 0.4 transform cloud from global frame to camera frame
+        // 0.4 将点云坐标系从世界坐标系变换到相机坐标系
         pcl::PointCloud<PointType>::Ptr depth_cloud_local(new pcl::PointCloud<PointType>());
         pcl::transformPointCloud(*depthCloud, *depth_cloud_local, transNow.inverse());
 
         // 0.5 project undistorted normalized (z) 2d features onto a unit sphere
+        // 0.5 投影去畸变归一化的2d特征点到单位球面；
         pcl::PointCloud<PointType>::Ptr features_3d_sphere(new pcl::PointCloud<PointType>());
         for (int i = 0; i < (int)features_2d.size(); ++i)
         {
@@ -147,6 +170,8 @@ public:
         }
 
         // 3. project depth cloud on a range image, filter points satcked in the same region
+        // 3. 投影深度图至离散化表格range image，实现同一区域点云滤波的效果；
+
         float bin_res = 180.0 / (float)num_bins; // currently only cover the space in front of lidar (-90 ~ 90)
         cv::Mat rangeImage = cv::Mat(num_bins, num_bins, CV_32F, cv::Scalar::all(FLT_MAX));
 
@@ -154,27 +179,35 @@ public:
         {
             PointType p = depth_cloud_local->points[i];
             // filter points not in camera view
+            // 判断当前点世超出相机视野
             if (p.x < 0 || abs(p.y / p.x) > 10 || abs(p.z / p.x) > 10)
                 continue;
             // find row id in range image
+            // 俯仰角离散化，为行序号
             float row_angle = atan2(p.z, sqrt(p.x * p.x + p.y * p.y)) * 180.0 / M_PI + 90.0; // degrees, bottom -> up, 0 -> 360
             int row_id = round(row_angle / bin_res);
             // find column id in range image
+            // 水平角离散化，作为列序号
             float col_angle = atan2(p.x, p.y) * 180.0 / M_PI; // degrees, left -> right, 0 -> 360
             int col_id = round(col_angle / bin_res);
             // id may be out of boundary
+            // 判断是否超过离散化表格边界
             if (row_id < 0 || row_id >= num_bins || col_id < 0 || col_id >= num_bins)
                 continue;
             // only keep points that's closer
+            // 离散表格每个表格值保留该区域中最近的点
             float dist = pointDistance(p);
             if (dist < rangeImage.at<float>(row_id, col_id))
             {
+                // range image记录距离
+                // pointArray记录该点
                 rangeImage.at<float>(row_id, col_id) = dist;
                 pointsArray[row_id][col_id] = p;
             }
         }
 
         // 4. extract downsampled depth cloud from range image
+        // 4. 从离散图range image中距离有效的点，形成新的深度点云图；
         pcl::PointCloud<PointType>::Ptr depth_cloud_local_filter2(new pcl::PointCloud<PointType>());
         for (int i = 0; i < num_bins; ++i)
         {
@@ -188,6 +221,7 @@ public:
         publishCloud(&pub_depth_cloud, depth_cloud_local, stamp_cur, "vins_body_ros");
 
         // 5. project depth cloud onto a unit sphere
+        // 5. 将深度点云图投影至单位球面;
         pcl::PointCloud<PointType>::Ptr depth_cloud_unit_sphere(new pcl::PointCloud<PointType>());
         for (int i = 0; i < (int)depth_cloud_local->size(); ++i)
         {
@@ -203,10 +237,12 @@ public:
             return depth_of_point;
 
         // 6. create a kd-tree using the spherical depth cloud
+        // 6. 用单位球面点云图构建kd树
         pcl::KdTreeFLANN<PointType>::Ptr kdtree(new pcl::KdTreeFLANN<PointType>());
         kdtree->setInputCloud(depth_cloud_unit_sphere);
 
         // 7. find the feature depth using kd-tree
+        // 7.使用KD树寻找距离图像特征最近的三个点,并求解相机中心经图像特征的向量到这三个点平面的距离；
         vector<int> pointSearchInd;
         vector<float> pointSearchSqDis;
         float dist_sq_threshold = pow(sin(bin_res / 180.0 * M_PI) * 5.0, 2);
@@ -244,7 +280,7 @@ public:
                 if (max_depth - min_depth > 2 || s <= 0.5)
                 {
                     continue;
-                } else if (s - max_depth > 0) {
+                } else if (s - max_depth > 0) {//向量OV与平面ABC的交点可能在平面以外
                     s = max_depth;
                 } else if (s - min_depth < 0) {
                     s = min_depth;
@@ -262,6 +298,7 @@ public:
         publishCloud(&pub_depth_feature, features_3d_sphere, stamp_cur, "vins_body_ros");
         
         // update depth value for return
+        // 仅返回深度超过3m
         for (int i = 0; i < (int)features_3d_sphere->size(); ++i)
         {
             if (features_3d_sphere->points[i].intensity > 3.0)
