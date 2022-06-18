@@ -25,6 +25,18 @@ docker镜像已上传docker-hub，可以拉取镜像按照教程使用节约环�
 
 
 
+### 采集设备
+
+<center>
+<img src="https://github.com/shuttworth/Record_Datasets_For_LVI-SAM/blob/main/img/device.jpg" width="70%">
+</center>
+
+### 建图效果
+<center>
+<img src="https://github.com/shuttworth/Record_Datasets_For_LVI-SAM/blob/main/img/result.jpg" width="70%">
+</center>
+
+
 ## 学习小组分享顺序
 
 1. **LVI-SAM英文论文精读** 
