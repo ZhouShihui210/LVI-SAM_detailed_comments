@@ -21,7 +21,7 @@ docker镜像已上传docker-hub，可以拉取镜像按照教程使用节约环�
 链接:https://pan.baidu.com/s/1e5UhbLfnJE28wVy1l1Rc3w?fm=lk0 
 提取码:x5xi
 
-百度网盘里存有80G的bag包，bag包的使用说明见网盘链接的README中
+百度网盘里存有80G的bag包，bag包的使用说明见此仓库的[README](https://github.com/shuttworth/Record_Datasets_For_LVI-SAM)
 
 
 
@@ -33,7 +33,7 @@ docker镜像已上传docker-hub，可以拉取镜像按照教程使用节约环�
 
 ### 建图效果
 <center>
-<img src="https://github.com/shuttworth/Record_Datasets_For_LVI-SAM/blob/main/img/result.jpg" width="70%">
+<img src="https://github.com/shuttworth/Record_Datasets_For_LVI-SAM/blob/main/img/result.png" width="70%">
 </center>
 
 
