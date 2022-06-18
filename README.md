@@ -40,6 +40,16 @@ docker镜像已上传docker-hub，可以拉取镜像按照教程使用节约环�
 </center>
 
 
+## 在M2DGR数据集上演示
+<center>
+<img src="https://github.com/shuttworth/Record_Datasets_For_LVI-SAM/blob/main/img/gate_01_v1.gif" width="70%">
+</center>
+
+<center>
+<img src="https://github.com/shuttworth/Record_Datasets_For_LVI-SAM/blob/main/img/gate_01_v2.gif" width="70%">
+</center>
+
+
 ## 学习小组分享顺序
 
 1. **LVI-SAM英文论文精读** 
@@ -58,7 +68,7 @@ docker镜像已上传docker-hub，可以拉取镜像按照教程使用节约环�
 
 ## 中文代码注释
 
-中文注释的代码已上传
+中文注释的代码已全部上传
 
 期待反馈当前注释存在的问题！
 
