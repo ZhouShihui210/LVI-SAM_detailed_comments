@@ -49,9 +49,6 @@ docker镜像已上传docker-hub，可以拉取镜像按照教程使用节约环�
 <img src="https://github.com/shuttworth/Record_Datasets_For_LVI-SAM/blob/main/img/street_08_v1.gif" width="70%">
 </center>
 
-<center>
-<img src="https://github.com/shuttworth/Record_Datasets_For_LVI-SAM/blob/main/img/street_08_v2.gif" width="70%">
-</center>
 
 ## 学习小组分享顺序
 
