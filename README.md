@@ -6,14 +6,18 @@
 
 荆黎明（东北大学）、刘嘉林（复旦大学）、汪寿安（中国矿业大学北京）、万文俊（中科院计算所）、周新杰（哈工大）、乔生（吉林大学）、刘嘉荣（上海交通大学）
 
-
+## 我们的贡献
+1. 为源代码提供了详细的中文注释
+2. 制作了docker镜像，可节约本地环境配置时间
+3. 录制了校园内的实际数据集并开放
+4. 在更多数据集上的验证可行性
 
 ## docker环境链接
 
 [LVI-SAM学习小组docker v1.2使用图文简洁介绍](https://github.com/electech6/LVI-SAM_detailed_comments/blob/master/LVI-SAM%E5%AD%A6%E4%B9%A0%E5%B0%8F%E7%BB%84docker%20v1.2%E4%BD%BF%E7%94%A8%E5%9B%BE%E6%96%87%E7%AE%80%E6%B4%81%E4%BB%8B%E7%BB%8D.pdf)
 
 docker镜像已上传docker-hub，可以拉取镜像按照教程使用节约环境配置的时间
-
+拉取镜像的命令：```docker pull liangjinli/slam-docker:v1.2```
 
 
 ## 学习小组录制LVI-SAM数据集
@@ -22,7 +26,6 @@ docker镜像已上传docker-hub，可以拉取镜像按照教程使用节约环�
 提取码:x5xi
 
 百度网盘里存有80G的bag包，bag包的使用说明见此仓库的[README](https://github.com/shuttworth/Record_Datasets_For_LVI-SAM)
-
 
 
 ### 采集设备
