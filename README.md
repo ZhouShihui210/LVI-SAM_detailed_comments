@@ -2,6 +2,27 @@
 
 -by 计算机视觉life 旗下 [SLAM知识星球学习小组](https://mp.weixin.qq.com/s/Lzn7jUPRwpbMqe-5Ku9Ksg)
 
+## Brief introduction
+**This project is the Chinese annotation of LVI-SAM code and related work, and we have recorded a detailed explanation video for this code. Our main contributions are as follows:**
+1. Provides detailed Chinese comments for the source code
+2. Created a docker image, which can save local environment configuration time
+   ``` 
+   docker pull liangjinli/slam-docker:v1.2
+   ```
+3. The actual dataset on campus was recorded and made available
+4. Validated on the M2DGR dataset and provided the LVI-SAM_M2DGR branch   
+
+
+### Contributors (in no particular order)
+Liming Jing(Northeastern University)  
+Jialin Liu(Fudan University)  
+Shouan Wang(China University of Mining & Technology-Beijing)   
+WenJun Wan(Institute of Computing, Chinese Academy of Sciences)  
+Xinjie Zhou(Harbin Institute of Technology)  
+Shijie Qiao(Jilin University)  
+Jiarong Liu(Shanghai Jiao Tong University)
+
+
 **参与人员**（排名不分先后）：
 
 荆黎明（东北大学）、刘嘉林（复旦大学）、汪寿安（中国矿业大学北京）、万文俊（中科院计算所）、周新杰（哈工大）、乔生（吉林大学）、刘嘉荣（上海交通大学）
@@ -41,6 +62,9 @@ docker镜像已上传docker-hub，可以拉取镜像按照教程使用节约环�
 
 
 ## 四、在M2DGR数据集上演示
+感谢上海交通大学邹丹平老师团队录制的开源数据集M2DGR，提供了更为丰富的多传感器数据方便我们验证LVI-SAM算法  
+数据集链接：https://github.com/SJTU-ViSYS/M2DGR  
+我们在该数据集上进行了相关适配，如果您想使用它，请切换到LVI-SAM_M2DGR分支
 <center>
 <img src="https://github.com/shuttworth/Record_Datasets_For_LVI-SAM/blob/main/img/gate_01_v1.gif" width="70%">
 </center>
