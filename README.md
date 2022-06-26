@@ -22,6 +22,10 @@ Xinjie Zhou(Harbin Institute of Technology)
 Shijie Qiao(Jilin University)  
 Jiarong Liu(Shanghai Jiao Tong University)
 
+### ISSUE LINK
+
+https://github.com/shuttworth/Record_Issues_For_LVI-SAM_detailed_comments/issues
+
 
 **参与人员**（排名不分先后）：
 
@@ -46,19 +50,25 @@ docker镜像已上传docker-hub，可以拉取镜像按照教程使用节约环�
 链接:https://pan.baidu.com/s/1e5UhbLfnJE28wVy1l1Rc3w?fm=lk0 
 提取码:x5xi
 
-百度网盘里存有80G的bag包，bag包的使用说明见此仓库的[README](https://github.com/shuttworth/Record_Datasets_For_LVI-SAM)
+我们录制了80G的bag包，bag包的使用说明见此仓库的[README](https://github.com/shuttworth/Record_Issues_For_LVI-SAM_detailed_comments)
+
+配置文件1：[params_daheng.yaml](https://github.com/shuttworth/Record_Issues_For_LVI-SAM_detailed_comments/blob/main/yaml/params_daheng.yaml)
+
+配置文件2：[params_vlp16.yaml](https://github.com/shuttworth/Record_Issues_For_LVI-SAM_detailed_comments/blob/main/yaml/params_vlp16.yaml)
 
 
 ### 采集设备
 
 <center>
-<img src="https://github.com/shuttworth/Record_Datasets_For_LVI-SAM/blob/main/img/device.jpg" width="70%">
+<img src="https://github.com/shuttworth/Record_Issues_For_LVI-SAM_detailed_comments/blob/main/img/device.jpg" width="70%">
 </center>
+
 
 ### 建图效果
 <center>
-<img src="https://github.com/shuttworth/Record_Datasets_For_LVI-SAM/blob/main/img/result.png" width="70%">
+<img src="https://github.com/shuttworth/Record_Issues_For_LVI-SAM_detailed_comments/blob/main/img/result.png" width="70%">
 </center>
+
 
 
 ## 四、在M2DGR数据集上演示
@@ -66,12 +76,13 @@ docker镜像已上传docker-hub，可以拉取镜像按照教程使用节约环�
 数据集链接：https://github.com/SJTU-ViSYS/M2DGR  
 我们在该数据集上进行了相关适配，如果您想使用它，请切换到LVI-SAM_M2DGR分支
 <center>
-<img src="https://github.com/shuttworth/Record_Datasets_For_LVI-SAM/blob/main/img/gate_01_v1.gif" width="70%">
+<img src="https://github.com/shuttworth/Record_Issues_For_LVI-SAM_detailed_comments/blob/main/img/gate_01_v1.gif" width="70%">
 </center>
 
 <center>
-<img src="https://github.com/shuttworth/Record_Datasets_For_LVI-SAM/blob/main/img/street_08_v1.gif" width="70%">
+<img src="https://github.com/shuttworth/Record_Issues_For_LVI-SAM_detailed_comments/blob/main/img/street_08_v1.gif" width="70%">
 </center>
+
 
 
 ## 五、学习小组分享顺序
