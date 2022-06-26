@@ -24,7 +24,7 @@ Jiarong Liu(Shanghai Jiao Tong University)
 
 ### ISSUE LINK
 
-https://github.com/shuttworth/Record_Issues_For_LVI-SAM_detailed_comments/issues
+[Please commit issues here](https://github.com/shuttworth/Record_Issues_For_LVI-SAM_detailed_comments/issues)
 
 
 **参与人员**（排名不分先后）：
