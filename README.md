@@ -1,9 +1,8 @@
-# LVI-SAM超详细注释与配套
+# LVI-SAM super detailed notes and supporting
 
--by 计算机视觉life 旗下 [SLAM知识星球学习小组](https://mp.weixin.qq.com/s/Lzn7jUPRwpbMqe-5Ku9Ksg)
-
-## Brief introduction
+## Brief Introduction
 **This project is the Chinese annotation of LVI-SAM code and related work, and we have recorded a detailed explanation video for this code. Our main contributions are as follows:**
+
 1. Provides detailed Chinese comments for the source code
 2. Created a docker image, which can save local environment configuration time
    ``` 
@@ -13,7 +12,7 @@
 4. Validated on the M2DGR dataset and provided the LVI-SAM_M2DGR branch   
 
 
-### Contributors (in no particular order)
+### Contributors (In no particular order)
 Liming Jing(Northeastern University)  
 Jialin Liu(Fudan University)  
 Shouan Wang(China University of Mining & Technology-Beijing)   
@@ -22,10 +21,13 @@ Xinjie Zhou(Harbin Institute of Technology)
 Shijie Qiao(Jilin University)  
 Jiarong Liu(Shanghai Jiao Tong University)
 
-### ISSUE LINK
+### Issues Link
 
-[Please commit issues here](https://github.com/shuttworth/Record_Issues_For_LVI-SAM_detailed_comments/issues)
+[Please Commit Issues Here](https://github.com/shuttworth/Record_Issues_For_LVI-SAM_detailed_comments/issues)
 
+# LVI-SAM超详细注释与配套
+
+-by 计算机视觉life 旗下 [SLAM知识星球学习小组](https://mp.weixin.qq.com/s/Lzn7jUPRwpbMqe-5Ku9Ksg)
 
 **参与人员**（排名不分先后）：
 
