@@ -49,8 +49,8 @@ docker镜像已上传docker-hub，可以拉取镜像按照教程使用节约环�
 
 ## 三、学习小组录制LVI-SAM数据集
 
-链接:https://pan.baidu.com/s/1e5UhbLfnJE28wVy1l1Rc3w?fm=lk0 
-提取码:x5xi
+链接:https://pan.baidu.com/s/1PX2MU4FQZbQ9jvk3ZZYQOQ?fm=lk0 
+提取码:kw12
 
 我们录制了80G的bag包，bag包的使用说明见此仓库的[README](https://github.com/shuttworth/Record_Issues_For_LVI-SAM_detailed_comments)
 
