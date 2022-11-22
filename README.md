@@ -14,3 +14,8 @@ rosbag play /home/zhoush/Documents/dataset/LVI-SAM/handheld-002.bag
 ```
 ![img](./doc/output1.png)
 
+尝试降低bag的播放速度[参考](https://blog.csdn.net/learning_tortosie/article/details/116051761)
+```
+rosbag info /path/to/handheld.bag -r 0.5
+```
+
