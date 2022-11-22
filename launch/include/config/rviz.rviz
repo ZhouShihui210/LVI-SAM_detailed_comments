@@ -26,7 +26,7 @@ Panels:
     Experimental: false
     Name: Time
     SyncMode: 0
-    SyncSource: ""
+    SyncSource: Image Feature
 Preferences:
   PromptSaveOnExit: true
 Toolbars:
@@ -377,7 +377,7 @@ Visualization Manager:
     - Class: rviz/Group
       Displays:
         - Class: rviz/Image
-          Enabled: false
+          Enabled: true
           Image Topic: /lvi_sam/vins/loop/match_image
           Max Value: 1
           Median window: 5
@@ -387,13 +387,14 @@ Visualization Manager:
           Queue Size: 2
           Transport Hint: raw
           Unreliable: false
-          Value: false
+          Value: true
         - Class: rviz/MarkerArray
           Enabled: true
           Marker Topic: /lvi_sam/lidar/mapping/loop_closure_constraints
           Name: Loop matches
           Namespaces:
-            {}
+            loop_edges: true
+            loop_nodes: true
           Queue Size: 100
           Value: true
         - Alpha: 1
